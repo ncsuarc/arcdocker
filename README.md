@@ -1,3 +1,9 @@
-# arcdocker
+# Arcdocker
 
-Dockerfiles and Docker Compose Files
+Docker Compose files for running various parts of the ARC stack.
+
+The files can be run with:
+
+```bash
+docker compose -f <YAML File> up -d
+```
