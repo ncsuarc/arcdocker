@@ -1,0 +1,11 @@
+services:
+  mavros:
+    container_name: mavros
+    build: ./backend
+  mavp2p:
+    container_name: mavp2p
+    image: aler9/mavp2p
+    volumes:
+    - /dev:/dev
+    privileged: true
+    command: serial:/dev/tty_pixhawk:57600 udpc:0.0.0.0:14551

@@ -1,0 +1,30 @@
+services:
+  backend:
+    container_name: shimmer-backend
+    image: ghcr.io/ncsuarc/shimmer-backend:latest
+    ports:
+      - "8080:80"
+    environment:
+      - HADES_TESTING=True
+      - ARC_FLIGHT=${ARC_FLIGHT}
+      - ARC_DB_HOST=db
+    depends_on:
+      db:
+        condition: service_healthy
+  frontend:
+    container_name: shimmer-frontend
+    image: ghcr.io/ncsuarc/shimmer-frontend:latest
+    ports:
+      - "80:80"
+  db:
+    container_name: shimmer-database
+    image: ghcr.io/ncsuarc/shimmer-database:latest
+    user: postgres
+    environment:
+      - POSTGRES_DB=imagery
+      - POSTGRES_PASSWORD=postgres
+    healthcheck:
+      test: /usr/bin/pg_isready
+      interval: 5s
+      timeout: 10s
+      retries: 120

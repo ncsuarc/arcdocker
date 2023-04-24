@@ -1,14 +1,13 @@
 services:
-    rc_server:
-        image: ghcr.io/ncsuarc/arcdrop
+    rc-server:
+        container_name: rc-server
+        image: ghcr.io/ncsuarc/arcdrop:latest
         network_mode: "host"
-        command: ros2 launch combined_launch.py
-    microros_agent: 
+        command: ros2 launch arcdrop rc_server_launch.py
+    micro-ros-agent: 
+        container_name: micro-ros-agent
         image: microros/micro-ros-agent:humble 
-        network_mode: "host"
         volumes:
         - /dev:/dev
-        - /dev/shm:/dev/shm
         privileged: true
         command: serial --dev /dev/tty_teensy -v6
-

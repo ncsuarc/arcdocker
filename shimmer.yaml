@@ -1,0 +1,18 @@
+services:
+  backend:
+    container_name: shimmer-backend
+    image: ghcr.io/ncsuarc/shimmer-backend:latest
+    ports:
+      - "8080:80"
+    environment:
+      - ARC_DB_HOST=host.docker.internal
+      - ARC_FLIGHT=${ARC_FLIGHT}
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    volumes:
+      - /RAID:/RAID
+  frontend:
+    container_name: shimmer-frontend
+    image: ghcr.io/ncsuarc/shimmer-frontend:latest
+    ports:
+      - "80:80"
