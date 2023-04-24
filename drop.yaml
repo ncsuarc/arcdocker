@@ -2,11 +2,13 @@ services:
     rc-server:
         container_name: rc-server
         image: ghcr.io/ncsuarc/arcdrop:latest
-        network_mode: "host"
+        network_mode: host
+        restart: unless-stopped
         command: ros2 launch arcdrop rc_server_launch.py
     micro-ros-agent: 
         container_name: micro-ros-agent
         image: microros/micro-ros-agent:humble 
+        restart: unless-stopped
         volumes:
         - /dev:/dev
         privileged: true
