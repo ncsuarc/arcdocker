@@ -3,7 +3,7 @@ services:
     container_name: mavros
     image: ghcr.io/ncsuarc/mavros
     network_mode: host
-    command: ros2 run mavros mavros_node --ros-args -p fcu_url:="/dev/tty_pixhawk" -p gcs_url:="udp://localhost:14550@"
+    command: ros2 run mavros mavros_node --ros-args -p fcu_url:="/dev/tty_pixhawk" -p gcs_url:="udp://localhost:14551@"
   mavp2p:
     container_name: mavp2p
     image: aler9/mavp2p

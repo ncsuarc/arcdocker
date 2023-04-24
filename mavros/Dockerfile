@@ -1,4 +1,5 @@
 FROM ros:humble
+SHELL ["/bin/bash", "-c"]
 
 ENV DEBIAN_FRONTEND=noninteractive
 RUN apt-get update && apt-get install -y ros-humble-mavros
@@ -9,4 +10,4 @@ RUN ./install_geographiclib_datasets.sh
 
 COPY entrypoint.sh /opt/entrypoint.sh
 RUN chmod +x /opt/entrypoint.sh
-ENTRYPOINT /opt/entrypoint.sh
+ENTRYPOINT ["/opt/entrypoint.sh"]
