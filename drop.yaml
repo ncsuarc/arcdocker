@@ -4,7 +4,7 @@ services:
         image: ghcr.io/ncsuarc/arcdrop:latest
         network_mode: host
         restart: unless-stopped
-        command: ros2 launch arcdrop rc_server_launch.py
+        command: ros2 launch arcdrop rc_drop_launch.py
     micro-ros-agent: 
         container_name: micro-ros-agent
         image: microros/micro-ros-agent:humble 
