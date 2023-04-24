@@ -1,7 +1,8 @@
 services:
   mavros:
     container_name: mavros
-    build: ./backend
+    image: ghcr.io/ncsuarc/mavros
+    command: ros2 run mavros mavros_node --ros-args -p fcu_url:="" -p gcs_url:=""
   mavp2p:
     container_name: mavp2p
     image: aler9/mavp2p
