@@ -12,4 +12,4 @@ RUN ./install_geographiclib_datasets.sh
 
 COPY entrypoint.sh entrypoint.sh
 RUN chmod +x entrypoint.sh
-ENTRYPOINT ["entrypoint.sh"]
+ENTRYPOINT ["/opt/ros2_ws/entrypoint.sh"]
