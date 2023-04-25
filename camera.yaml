@@ -1,0 +1,19 @@
+services:
+    capture:
+        container_name: capture
+        image: ghcr.io/ncsuarc/arccamera:latest
+        restart: unless-stopped
+        network_mode: host
+        volumes:
+        - /dev/shm:/dev/shm
+        privileged: true
+        command: ros2 launch arccamera capture_launch.py
+    telemetry-server: 
+        container_name: telemetry-server
+        image: ghcr.io/ncsuarc/arccamera:latest
+        restart: unless-stopped
+        network_mode: host
+        volumes:
+        - /dev/shm:/dev/shm
+        privileged: true
+        command: ros2 launch arccamera telemetry_server_launch.py
