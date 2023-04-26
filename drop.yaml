@@ -3,11 +3,13 @@ services:
         container_name: rc-server
         image: ghcr.io/ncsuarc/arcdrop:latest
         restart: unless-stopped
+        network_mode: bridge
         command: ros2 launch arcdrop rc_drop_launch.py
     micro-ros-agent: 
         container_name: micro-ros-agent
         image: microros/micro-ros-agent:humble 
         restart: unless-stopped
+        network_mode: bridge
         volumes:
         - /dev:/dev
         privileged: true
